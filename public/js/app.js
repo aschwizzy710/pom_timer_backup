@@ -1,22 +1,32 @@
 (function() {
+
   //initialize variables
   var startButton= $("#start");
   var seconds = $("#seconds");
-
-
+  var minutes = $("#minutes");
 
   //main functionality
   startButton.on("click", countdown);
-
-
-
-
 
   //function definition
   function countdown(){
     var secondsText = seconds.text ();
     var secondsTextAsNumber = parseInt(secondsText);
+    var minutesText = minutes.text();
+    var minutesTextAsNumber = parseInt(minutesText);
+
+    //console.log(typeof secondsText);
+    //console.log(typeof secondsTextAsNumber);
+    if (minutesTextAsNumber === 0 && secondsTextAsNumber === 0){
+      //stop!
+      return; //temporary
+    }
     if (secondsTextAsNumber === 0) {
+      if (minutesTextAsNumber !== 0){
+      var decreaseMinutesAsNumberByOne = minutesTextAsNumber -1;
+      var padminutesTextAsNumber = pad(decreaseMinutesAsNumberByOne);
+      minutes.text(padminutesTextAsNumber);
+}
       seconds.text ("59");
       //then change seconds text to 59
   } else {
