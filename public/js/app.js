@@ -15,9 +15,9 @@
     //set that we are on a break
     isOnBreak = true;
     //set the minutes to 5 minutes
-    minutes.text('00');
+    minutes.text('05');
     // set the seconds to 0 seconds
-    seconds.text('02');
+    seconds.text('00');
     // hide the break button
     breakButton.hide();
     // start the timer
@@ -39,26 +39,27 @@
     //console.log(typeof secondsTextAsNumber);
     if (minutesTextAsNumber === 0 && secondsTextAsNumber === 0){
       //stop!
+      clearInterval(timerInterval); //this will stop the timer
+      timerInterval = null;
       if(!isOnBreak){
-        clearInterval(timerInterval); //this will stop the timer
-        timerInterval = null;
         //disable the start button
         startButton.attr('disabled', true);
         //unhide the break button
         breakButton.show();
-        return;
     } else {
         minutes.text('25');
         seconds.text('00');
+        startButton.attr('disabled', false);
+        isOnBreak = false;
+      }
         return;
-  }
-}
+    }
     if (secondsTextAsNumber === 0) {
       if (minutesTextAsNumber !== 0){
       var decreaseMinutesAsNumberByOne = minutesTextAsNumber -1;
       var padminutesTextAsNumber = pad(decreaseMinutesAsNumberByOne);
       minutes.text(padminutesTextAsNumber);
-}
+  }
       seconds.text ("59");
       //then change seconds text to 59
   } else {
